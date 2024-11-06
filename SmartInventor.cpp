@@ -17,7 +17,7 @@ void SmartInventorClass::TVRemoconUse() //control command
 //	ChannelSW2 = 9;
 //	ChannelSW3 = 10;
 
-	//64ºĞÁÖ - 100us Å¸ÀÌ¸Ó
+	//64ë¶„ì£¼ - 100us íƒ€ì´ë¨¸
 	//ir receiver
 	//pinMode(irPIN, INPUT);
 	DDRB &= ~0b10000;
@@ -31,16 +31,6 @@ void SmartInventorClass::TVRemoconUse() //control command
 	PORTB |=  1100000;
 		  
 	Timer2Set();
-}
-void SmartInventorClass::TVRemoconClose() //control command
-{
-	remoconUseTV = 0;
-	if(dcUse == 0 || remoconUseTV == 0 || remoconUseRF == 0) TIMSK |= (0<<TOIE2);  
-}
-int SmartInventorClass::TVRemoconData()
-{
-	SmartInventor.RemoconSetChannel(); 
-	return dataCode;
 }
 
 void SmartInventorClass::RemoconSetChannel()
@@ -331,7 +321,7 @@ ISR(TIMER2_OVF_vect)
  }
  */
  SmartInventor.DCPWMCount++;
- if(SmartInventor.DCPWMCount >= 130) {SmartInventor.DCPWMCount = 0;}//ÃÖ°í¼Óµµ´Â 0~100ÀÌÁö¸¸ pwm Ä«¿îÅÍ´Â 120À¸·ÎÇÏ¿© ¸ğÅÍ µå¶óÀÌºêÀÇ ºÎ´ãÀ» ÁÙ¿©ÁÖµµ·Ï ÇÑ´Ù.(ÃÖ°í¼Óµµ´Â °¨¼ÒÇÔ)
+ if(SmartInventor.DCPWMCount >= 130) {SmartInventor.DCPWMCount = 0;}//ìµœê³ ì†ë„ëŠ” 0~100ì´ì§€ë§Œ pwm ì¹´ìš´í„°ëŠ” 120ìœ¼ë¡œí•˜ì—¬ ëª¨í„° ë“œë¼ì´ë¸Œì˜ ë¶€ë‹´ì„ ì¤„ì—¬ì£¼ë„ë¡ í•œë‹¤.(ìµœê³ ì†ë„ëŠ” ê°ì†Œí•¨)
 }
 
 /////////////////////////////////////////////////////
